@@ -7,21 +7,19 @@ import {
   FathymEaCServicesPlugin,
 } from '@fathym/eac/runtime';
 import { EaCSynapticCircuitsProcessor, FathymSynapticPlugin } from '@fathym/synaptic';
-import { DefaultMyCoreProcessorHandlerResolver } from './DefaultMyCoreProcessorHandlerResolver.ts';
-import MyCoreSynapticPlugin from './MyCoreSynapticPlugin.ts';
+import { DefaultThinkyEaCUtilsProcessorHandlerResolver } from './DefaultThinkyEaCUtilsProcessorHandlerResolver.ts';
+import ThinkyEaCUtilsSynapticPlugin from './ThinkyEaCUtilsSynapticPlugin.ts';
 import { IoCContainer } from '@fathym/ioc';
 
-export default class MyCoreRuntimePlugin implements EaCRuntimePlugin {
+export default class ThinkyEaCUtilsRuntimePlugin implements EaCRuntimePlugin {
   constructor() {}
 
   public Setup(config: EaCRuntimeConfig) {
     const pluginConfig: EaCRuntimePluginConfig = {
-      Name: MyCoreRuntimePlugin.name,
+      Name: ThinkyEaCUtilsRuntimePlugin.name,
       Plugins: [
         new FathymAzureContainerCheckPlugin(),
-        new FathymEaCServicesPlugin(),
-        new FathymDFSFileHandlerPlugin(),
-        new MyCoreSynapticPlugin(),
+        new ThinkyEaCUtilsSynapticPlugin(),
         new FathymSynapticPlugin(),
       ],
       IoC: new IoCContainer(),
@@ -67,7 +65,7 @@ export default class MyCoreRuntimePlugin implements EaCRuntimePlugin {
       },
     };
 
-    pluginConfig.IoC!.Register(DefaultMyCoreProcessorHandlerResolver, {
+    pluginConfig.IoC!.Register(DefaultThinkyEaCUtilsProcessorHandlerResolver, {
       Type: pluginConfig.IoC!.Symbol('ProcessorHandlerResolver'),
     });
 

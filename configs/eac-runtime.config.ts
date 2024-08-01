@@ -1,11 +1,21 @@
 import * as _azureSearch from 'npm:@azure/search-documents';
 import * as _parse from 'npm:pdf-parse';
 import * as _htmlToText from 'npm:html-to-text';
-import { DefaultEaCConfig, defineEaCConfig, EaCRuntime } from '@fathym/eac/runtime';
-import MyCoreRuntimePlugin from '../src/plugins/MyCoreRuntimePlugin.ts';
+import {
+  DefaultEaCConfig,
+  defineEaCConfig,
+  EaCRuntime,
+} from '@fathym/eac/runtime';
+import ThinkyEaCUtilsRuntimePlugin from '../src/plugins/ThinkyEaCUtilsRuntimePlugin.ts';
 
 export const config = defineEaCConfig({
-  Plugins: [...(DefaultEaCConfig.Plugins || []), new MyCoreRuntimePlugin()],
+  Server: {
+    port: 6152,
+  },
+  Plugins: [
+    ...(DefaultEaCConfig.Plugins || []),
+    new ThinkyEaCUtilsRuntimePlugin(),
+  ],
 });
 
 export function configure(_rt: EaCRuntime): Promise<void> {

@@ -1,1 +1,1 @@
-import './simple-tool.tests.ts';
+import './FathymEaCStatusPlugin.tests.ts';

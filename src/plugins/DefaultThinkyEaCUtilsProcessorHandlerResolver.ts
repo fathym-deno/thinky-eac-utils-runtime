@@ -7,7 +7,7 @@ import {
 import { IoCContainer } from '@fathym/ioc';
 import { DefaultSynapticProcessorHandlerResolver } from '@fathym/synaptic';
 
-export class DefaultMyCoreProcessorHandlerResolver implements ProcessorHandlerResolver {
+export class DefaultThinkyEaCUtilsProcessorHandlerResolver implements ProcessorHandlerResolver {
   public async Resolve(
     ioc: IoCContainer,
     appProcCfg: EaCApplicationProcessorConfig,
